@@ -1,0 +1,30 @@
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>EmployeeId</th>
+        <th>Employee Name</th>
+        <th>Department</th>
+        <th>Date of Joining</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor= "let dataItem of EmployeeList">
+        <td scope="row">{{dataItem.EmployeeId}}</td>
+        <td>{{dataItem.EmployeeName}}</td>
+        <td>{{dataItem.Department}}</td>
+        <td>{{dataItem.DateOfJoining}}</td>
+        <td>
+          <kendo-buttongroup>
+            <button kendoButton >Edit</button>
+            <button kendoButton >Delete</button>
+
+          </kendo-buttongroup>
+
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
