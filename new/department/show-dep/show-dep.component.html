@@ -1,0 +1,122 @@
+<div class="container">
+  <!-- <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>DepartmentId</th>
+        <th>Department Name</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor= "let dataItem of DepartmentList">
+        <td scope="row">{{dataItem.DepartmentId}}</td>
+        <td>{{dataItem.DepartmentName}}</td>
+        <td>
+          <kendo-buttongroup>
+            <button kendoButton >Edit</button>
+            <button kendoButton >Delete</button>
+
+          </kendo-buttongroup>
+
+        </td>
+      </tr>
+
+    </tbody>
+  </table> -->
+
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+        (click)="closeClick()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-add-edit-dep [dep]="dep" *ngIf= "ActivateAddEditDepComp">
+
+         </app-add-edit-dep>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+  <form novalidate>
+    <kendo-grid [data]="DepartmentList" [pageSize]="10"
+    [sortable]="true"
+    [pageable]="true"
+    [filterable]="true"
+    style="height: 500px;"
+  >
+  <ng-template kendoGridToolbarTemplate>
+    <button kendoGridAddCommand type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+    (click)="addClick()"
+    data-backdrop="static" data-keyboard="false"
+    >Add new</button>
+  </ng-template>
+  <kendo-grid-column
+  field="DepartmentId"
+  title="Department Id"
+  [width]="40"
+
+  >
+  </kendo-grid-column>
+  <kendo-grid-column
+  field="DepartmentName"
+  title="Department Name"
+  [width]="120">
+  </kendo-grid-column>
+  <kendo-grid-command-column title="command" [width]="50">
+  <ng-template kendoGridCellTemplate let-isNew="isNew">
+    <button kendoGridEditCommand type="button" [primary]="true"
+    data-toggle="modal" data-target="#exampleModal"
+    (click)="editClick(item)"
+    data-backdrop="static" data-keyboard="false"
+    >
+      Edit
+    </button>
+    <button kendoGridRemoveCommand type="button"
+    (click)="deleteClick(item)"
+
+    >Remove</button>
+    <button
+      kendoGridSaveCommand
+      type="button"
+    >Add
+
+    </button>
+    <button kendoGridCancelCommand type="button">
+      Cancel
+    </button>
+    <!-- <button
+      kendoGridSaveCommand
+      type="button"
+      [disabled]="myForm.invalid || myForm.pristine"
+    >
+      {{ isNew ? "Add" : "Update" }}
+    </button> -->
+    <!-- <button kendoGridCancelCommand type="button">
+      {{ isNew ? "Discard changes" : "Cancel" }}
+    </button> -->
+  </ng-template>
+  </kendo-grid-command-column>
+  </kendo-grid>
+
+  </form>
+</div>
+
+<!-- <form novalidate #myForm="ngForm"></form> -->
+
+
+
+
+
