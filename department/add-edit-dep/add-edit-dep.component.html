@@ -1,0 +1,11 @@
+
+    <div class="form-group">
+      <label>Department Name</label>
+      <input [ngModel]="DepartmentName" name="DepartmentName" type="text" class="form-control"
+       placeholder="Enter Department Name">
+  </div>
+
+  <button type="button" [primary]="true" (click)="addDepartment()" *ngIf="dep.DepartmentId==0" class="btn btn-default">Add</button>
+
+  <button kendoGridRemoveCommand (click)="UpdateDepartment()" *ngIf="dep.DepartmentId!=0"  class="btn btn-default">Update</button>
+
